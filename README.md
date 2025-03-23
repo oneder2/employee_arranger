@@ -31,36 +31,37 @@ Database: SQLite (default) or configurable to PostgreSQL/MySQL
 
 ## Installation
 1. Clone the Repository
-bash
+```bash
 git clone <repository-url>
 cd personnel-management-system
+```
 
 2. Set Up a Virtual Environment
-bash
-
+```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
-
+```
 3. Install Dependencies
-bash
+```bash
 pip install -r requirements.txt
+```
 
 4. Apply Migrations
-bash
+```bash
 python manage.py makemigrations
 python manage.py migrate
+```
 
 5. Run the Development Server
-bash
-
+```bash
 python manage.py runserver
 Access the application at http://127.0.0.1:8000/.
-
+```
 ## Usage
 - Create a superuser to access the admin panel:
-bash
-
+```bash
 python manage.py createsuperuser
+```
 - Log in to the Django admin interface to manage employees, departments, clients, and permissions.
 - Once the login system is complete, users will authenticate through a custom login page based on their assigned roles.
 
