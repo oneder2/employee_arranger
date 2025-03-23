@@ -1,0 +1,103 @@
+{% comment %} 
+    employee_edit is depreciated, 
+    instead, please switch to employee_modify
+{% endcomment %}
+
+
+{% extends "index/template.html" %}
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/layui.css'%}">
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <!-- card -->
+    <div class="card text-bg-dark mb-3">
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <!-- input -->
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        {% comment %} page function info block {% endcomment %}
+                        <div class="card-header", style="font-size: 30pt;">
+                            {{ title }}
+                        </div>
+                        <h5 class="card-title">Fill the box, and press "submit" to add</h5>
+                        
+                        {% comment %} name {% endcomment %}
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                            <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                          </div>
+                        
+                          {% comment %} age {% endcomment %}
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Age</span>
+                            <input type="text" name="age" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        
+                        {% comment %} gender {% endcomment %}
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Gender</span>
+                            {% comment %} <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"> {% endcomment %}
+                            <select name="gender" class="form-control">
+                                {% for item in gender_choices %}
+                                    <option value="{{ item.0 }}">{{ item.1 }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        {% comment %} salary {% endcomment %}
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Salary</span>
+                            <input type="text" name="salary" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>  
+                        
+                        {% comment %} create time {% endcomment %}
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Create time</span>
+                            <div class="layui-input-inline">
+                                <input type="text" name="create_time" class="form-control layui-input" id="ID-laydate-demo-en" placeholder="yyyy-MM-dd">
+                            </div>
+                        </div>  
+
+                        {% comment %} department {% endcomment %}
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Department</span>
+                            <select name="department" class="form-control">
+                                {% for item in depart_list %}
+                                    <option value="{{ item.id }}">{{ item.title }}</option>
+                                {% endfor %}
+                            </select> 
+                        </div>  
+                        <!-- add button -->
+                        <button type="submit" class="btn btn-success" style="font-size: large; margin-top: 10px;">
+                            Submit
+                        </button>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock%}
+
+{% block js %}
+<script src="{% static 'js/layui.js' %}"></script>
+<script>
+    layui.use(function(){
+        var laydate = layui.laydate;
+        laydate.render({
+          elem: '#ID-laydate-demo-en',
+          lang: 'en'
+        });
+      });
+</script>
+{% endblock %}

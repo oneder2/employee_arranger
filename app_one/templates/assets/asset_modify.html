@@ -1,0 +1,53 @@
+{% extends "index/template.html" %}
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/layui.css'%}">
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <!-- card -->
+    <div class="card text-bg-dark mb-3">
+        <div class="card-body row">
+            <div class="col-2"></div>
+            <div class="form-group col-8">
+                <div class="card-header", style="font-size: 30pt;">
+                    {{ title }}
+                </div>
+                <h5>fill the box, and click submit to add</h5>
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    <!-- input -->
+                    {% for filed in form %}
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">{{ filed.label }}</span>
+                        {{ filed }}
+                    </div>
+                    <div style="color:red"> {{ filed.errors }} </div>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-success" style="font-size: large; margin-top: 10px;">
+                        Submit
+                    </button>
+                </form>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+</div>
+{% endblock%}
+
+{% block js %}
+<script src="{% static 'js/layui.js' %}"></script>
+<script>
+    layui.use(function(){
+        var laydate = layui.laydate;
+        laydate.render({
+          elem: '#id_create_time',
+          lang: 'en'
+        });
+      });
+</script>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "index/template.html" %}
+
+
+{% block content %}
+<div class="container">
+    <!-- card -->
+    <div class="card text-bg-dark mb-3">
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <!-- input -->
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <div class="card-header", style="font-size: 30pt;">
+                            {{ title }}
+                        </div>
+                        <h5 class="card-title">Fill the box, and press "submit" to add</h5>
+                        <input type="text" class="form-control" name="title" placeholder="{{ name.title }}" style="font-size: large;">
+                        <!-- add button -->
+                        <button type="submit" class="btn btn-success" style="font-size: large; margin-top: 10px;">
+                            Submit
+                        </button>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock%}
