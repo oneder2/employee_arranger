@@ -16,12 +16,17 @@ The Personnel Management System is a web-based application built using the Pytho
 4. Client Information Management
     - Maintain a database of client details.
     - Facilitate easy retrieval and updates of client-related data.
-
-## Under Development
-- Role-Based Login System
+5. Role-Based Login System
     - A secure authentication system linked to personnel permissions.
     - Users will log in with credentials tied to their assigned roles, ensuring restricted access based on permissions.
 - Expected to include features such as password hashing, session management, and user-specific dashboards.
+
+## Under Development
+1. Secure code
+2. Ajax request
+3. Files upload
+4. Table upload
+5. Project deployment
 
 ## Technologies Used
 - Backend: Python, Django
