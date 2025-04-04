@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 null=True,
                 on_delete=django.db.models.deletion.SET_NULL,
                 to="app_one.employee",
-                verbose_name="user_name",
+                verbose_name="username",
             ),
         ),
     ]

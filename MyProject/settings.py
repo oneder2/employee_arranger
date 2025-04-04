@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'app_one.middleware.auth.AuthMiddleWare'
 ]
 
 ROOT_URLCONF = 'MyProject.urls'
@@ -130,3 +131,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+UNICOM_PERMISSION = {
+    0: ["depart_add", "depart_modify", "depart_del",
+        "user_add_modelform", "user_modify_modelform",
+        "assets_del", "assets_add_modelform", "assets_modify_modelform",
+        "permission_del", "permission_add", "permission_modify", "permission_reset"],
+    1: [],
+    2: []
+}

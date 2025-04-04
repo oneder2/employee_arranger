@@ -10,7 +10,7 @@ class PermissionModelForm(forms.ModelForm):
 
     class Meta:
         model = models.Permission
-        fields = ["id", "user_name", "password", "new_password", "role"]
+        fields = ["id", "username", "password", "new_password", "role"]
         widgets = {
             "password": forms.PasswordInput
         }
@@ -22,17 +22,17 @@ class PermissionModelForm(forms.ModelForm):
                 "class": "form-control"
             }
     
-    def clean_user_name(self): 
-        new_user_name = self.cleaned_data["user_name"]
+    def clean_username(self): 
+        new_username = self.cleaned_data["username"]
         
         # 获取当前实例（如果有的话）
         instance = getattr(self, 'instance', None)
 
-        # 检查新输入的 user_name 是否已存在
-        if_exists = models.Permission.objects.filter(user_name=new_user_name).exists()
-        if if_exists and instance.user_name != new_user_name:
-            raise ValidationError("user_name# exists")
-        return new_user_name        
+        # 检查新输入的 username 是否已存在
+        if_exists = models.Permission.objects.filter(username=new_username).exists()
+        if if_exists and instance.username != new_username:
+            raise ValidationError("username# exists")
+        return new_username        
     
     def clean_password(self):
         """获取MD5加密原密码"""
@@ -56,7 +56,7 @@ class AdminModifyModelForm(forms.ModelForm):
     """修改信息验证表格"""
     class Meta:
         model = models.Permission
-        fields = ["user_name", "role"]
+        fields = ["username", "role"]
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -65,17 +65,17 @@ class AdminModifyModelForm(forms.ModelForm):
                 "class": "form-control"
             }
 
-    def clean_user_name(self): 
-        new_user_name = self.cleaned_data["user_name"]
+    def clean_username(self): 
+        new_username = self.cleaned_data["username"]
         
         # 获取当前实例（如果有的话）
         instance = getattr(self, 'instance', None)
 
-        # 检查新输入的 user_name 是否已存在
-        if_exists = models.Permission.objects.filter(user_name=new_user_name).exists()
-        if if_exists and instance.user_name != new_user_name:
-            raise ValidationError("user_name# exists")
-        return new_user_name
+        # 检查新输入的 username 是否已存在
+        if_exists = models.Permission.objects.filter(username=new_username).exists()
+        if if_exists and instance.username != new_username:
+            raise ValidationError("username# exists")
+        return new_username
     
 
 class AdminResetModelForm(forms.ModelForm):

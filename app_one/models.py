@@ -39,7 +39,7 @@ class Assets(models.Model):
     )
     status = models.IntegerField(verbose_name="Usage_condition", choices=start_code_choice)
     create_time = models.DateField(verbose_name="Created_time")
-    user = models.ForeignKey(verbose_name="user_name",
+    user = models.ForeignKey(verbose_name="username",
                              to="Employee", 
                              to_field="id", 
                              on_delete=models.SET_NULL, 
@@ -50,7 +50,7 @@ class Assets(models.Model):
 
 
 class Permission(models.Model):
-    user_name = models.CharField(verbose_name="user_name", max_length=32)
+    username = models.CharField(verbose_name="username", max_length=32)
     password = models.CharField(verbose_name="password", max_length=64)
     ROLE_CHOICES = (
         (0, "Visitor"),

@@ -73,7 +73,7 @@ def permission_del(request, nid):
 
 def permission_reset(request, nid):
     title_object = models.Permission.objects.filter(id=nid).first()
-    title = f"reset password of <{title_object.user_name}>"
+    title = f"reset password of <{title_object.username}>"
     if request.method == "GET":
         form = AdminResetModelForm()
         return render(request, "permission/permission_modify.html", {"title": title, "form": form})

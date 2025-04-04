@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 (
-                    "user_name",
+                    "username",
                     models.CharField(max_length=32, verbose_name="uver_name"),
                 ),
                 ("password", models.CharField(max_length=64, verbose_name="password")),

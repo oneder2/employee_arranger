@@ -1,0 +1,35 @@
+{% extends "login/base.html" %}
+
+{% block title %}注册 - 公司管理系统{% endblock %}
+
+{% block content %}
+<h3 class="mb-5">注册</h3>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        {{ form.username.label_tag }}
+        {{ form.username }}
+    </div>
+    <div class="mb-3">
+        {{ form.password1.label_tag }}
+        {{ form.password1 }}
+    </div>
+    <div class="mb-3">
+        {{ form.password2.label_tag }}
+        {{ form.password2 }}
+    </div>
+    {% if form.errors %}
+    <div class="alert alert-danger">
+        {{ form.non_field_errors }}
+        {% for field in form %}
+            {% for error in field.errors %}
+                <p>{{ field.label }}: {{ error }}</p>
+            {% endfor %}
+        {% endfor %}
+    </div>
+    {% endif %}
+    <button type="submit" class="btn btn-primary w-100">注册</button>
+    <hr class="my-4">
+    <p class="mt-3">已有账号？<a href="{% url 'login' %}">登录</a></p>
+</form>
+{% endblock %}

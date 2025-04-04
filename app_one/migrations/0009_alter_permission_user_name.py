@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterField(
             model_name="permission",
-            name="user_name",
-            field=models.CharField(max_length=32, verbose_name="user_name"),
+            name="username",
+            field=models.CharField(max_length=32, verbose_name="username"),
         ),
     ]
